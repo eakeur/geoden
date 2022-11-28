@@ -10,6 +10,6 @@ class ReportService {
   }
 
   Future<void> sendReport(Report report) async {
-    
+    return Future.delayed(const Duration(milliseconds: 1500));
   }
 }

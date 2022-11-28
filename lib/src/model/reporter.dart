@@ -5,28 +5,33 @@ import 'package:intl/intl.dart';
 class Reporter {
   final String cpf;
   final String fullName;
+  final String email;
   final String birthDate;
 
   const Reporter({
-    required this.cpf, 
-    required this.fullName, 
+    required this.cpf,
+    required this.fullName,
+    required this.email,
     required this.birthDate,
   });
 
   Reporter.fromDate({
-    required this.cpf, 
-    required this.fullName, 
+    required this.cpf,
+    required this.fullName,
+    required this.email,
     required DateTime birthDate,
   }) : birthDate = DateFormat('yyyyMMdd').format(birthDate);
 
   Reporter copyWith({
     String? cpf,
     String? fullName,
+    String? email,
     String? birthDate,
   }) {
     return Reporter(
       cpf: cpf ?? this.cpf,
       fullName: fullName ?? this.fullName,
+      email: email ?? this.email,
       birthDate: birthDate ?? this.birthDate,
     );
   }
@@ -36,6 +41,7 @@ class Reporter {
   
     result.addAll({'cpf': cpf});
     result.addAll({'fullName': fullName});
+    result.addAll({'email': email});
     result.addAll({'birthDate': birthDate});
   
     return result;
@@ -45,6 +51,7 @@ class Reporter {
     return Reporter(
       cpf: map['cpf'] ?? '',
       fullName: map['fullName'] ?? '',
+      email: map['email'] ?? '',
       birthDate: map['birthDate'] ?? '',
     );
   }
@@ -54,7 +61,9 @@ class Reporter {
   factory Reporter.fromJson(String source) => Reporter.fromMap(json.decode(source));
 
   @override
-  String toString() => 'Reporter(cpf: $cpf, fullName: $fullName, birthDate: $birthDate)';
+  String toString() {
+    return 'Reporter(cpf: $cpf, fullName: $fullName, email: $email, birthDate: $birthDate)';
+  }
 
   @override
   bool operator ==(Object other) {
@@ -63,11 +72,17 @@ class Reporter {
     return other is Reporter &&
       other.cpf == cpf &&
       other.fullName == fullName &&
+      other.email == email &&
       other.birthDate == birthDate;
   }
 
   @override
-  int get hashCode => cpf.hashCode ^ fullName.hashCode ^ birthDate.hashCode;
+  int get hashCode {
+    return cpf.hashCode ^
+      fullName.hashCode ^
+      email.hashCode ^
+      birthDate.hashCode;
+  }
 
   static String? validateCPF(String? cpf) {
     if (cpf == null) {

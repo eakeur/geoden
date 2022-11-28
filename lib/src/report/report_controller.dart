@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:geoden/src/model/location.dart';
-import 'package:geoden/src/model/reporter.dart';
 import 'package:geoden/src/model/report.dart';
+import 'package:geoden/src/model/reporter.dart';
+
 import 'report_service.dart';
 
 class ReportController {
@@ -10,27 +11,30 @@ class ReportController {
   final GlobalKey<FormState> reporterForm, locationForm;
 
   late Report _report;
-  
-  ReportController(this._reportService) 
-    : _report = const Report(
-      reporter: Reporter(
-        birthDate: "", 
-        cpf: "", 
-        fullName: "",
-      ), 
-      location: Location(
-        city: "", 
-        state: "", 
-        region: "",
-      ),
-    ),
-    reporterForm = GlobalKey<FormState>(),
-    locationForm = GlobalKey<FormState>();
 
-  bool get isReporterFormValid => reporterForm.currentState != null &&
+  ReportController(this._reportService)
+      : _report = const Report(
+          reporter: Reporter(
+            birthDate: "",
+            cpf: "",
+            fullName: "",
+            email: "",
+          ),
+          location: Location(
+            city: "",
+            state: "",
+            region: "",
+          ),
+        ),
+        reporterForm = GlobalKey<FormState>(),
+        locationForm = GlobalKey<FormState>();
+
+  bool get isReporterFormValid =>
+      reporterForm.currentState != null &&
       reporterForm.currentState!.validate();
 
-  bool get isLocationFormValid => locationForm.currentState != null &&
+  bool get isLocationFormValid =>
+      locationForm.currentState != null &&
       locationForm.currentState!.validate();
 
   Report get report => _report;

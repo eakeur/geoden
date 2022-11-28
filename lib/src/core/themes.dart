@@ -25,11 +25,12 @@ ThemeData defaultThemeData() {
       centerTitle: true,
     ),
     inputDecorationTheme: InputDecorationTheme(
-      contentPadding: const EdgeInsets.symmetric(horizontal: 60, vertical: 25),
-      labelStyle: GoogleFonts.poppins().copyWith(fontSize: 18),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 45, vertical: 15),
+      labelStyle:
+          GoogleFonts.poppins().copyWith(fontSize: 14, color: Colors.black),
       focusColor: Colors.green,
       enabledBorder: const UnderlineInputBorder(
-          borderSide: BorderSide(color: Colors.black38)),
+          borderSide: BorderSide(color: Colors.black)),
       focusedBorder: const UnderlineInputBorder(
           borderSide: BorderSide(color: Colors.green)),
       errorBorder: const UnderlineInputBorder(
@@ -43,7 +44,8 @@ ThemeData fireThemeData() {
   return theme.copyWith(
     scaffoldBackgroundColor: Colors.amber[200],
     colorScheme: ColorScheme.light(
-      primary: Colors.orange[900]!
+      primary: Colors.orange[900]!,
+      secondary: Colors.orange,
     ),
     appBarTheme: theme.appBarTheme.copyWith(
       iconTheme: IconThemeData(color: Colors.orange[900]),
@@ -52,7 +54,6 @@ ThemeData fireThemeData() {
     inputDecorationTheme: theme.inputDecorationTheme.copyWith(
       focusColor: Colors.orange[900],
       focusedBorder: UnderlineInputBorder(
-
         borderSide: BorderSide(color: Colors.orange[900]!, width: 3),
       ),
     ),
